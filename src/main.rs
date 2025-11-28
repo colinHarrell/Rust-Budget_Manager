@@ -85,6 +85,30 @@ println!();
 
 if db.login(&username, &password) {
     println!("\nWelcome back, {}!", username);
+
+    println!("What would you like to do?");
+    println!("1. View net worth");
+    println!("2. View Budget");
+    println!("3. Add Income");
+    
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read");
+
+    // Convert input to integer
+    let _num: u32 = match input.trim().parse() {
+        Ok(n) => n,
+        Err(_) => {
+            println!("Please enter a valid number!");
+            return;
+        }
+    };
+
+    match input.trim() {
+        "1" => println!("You chose to view your budget."),
+        "2" => println!("You chose to add an expense."),
+        "3" => println!("You chose to add income."),
+        _ => println!("Invalid option."),
+    }
 } else {
     println!("\nInvalid username or password.");
 }
