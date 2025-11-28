@@ -1,0 +1,5 @@
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\build\proc-macro2-010a58a222bf6b92\build_script_build-010a58a222bf6b92.d: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro2-1.0.103\build.rs
+
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\build\proc-macro2-010a58a222bf6b92\build_script_build-010a58a222bf6b92.exe: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro2-1.0.103\build.rs
+
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\proc-macro2-1.0.103\build.rs:

@@ -26,3 +26,8 @@ Features:
 -Fast and safe
 
 -Built with Rust’s performance and reliability
+
+How to run:
+
+1. Download project
+2. cargo run
