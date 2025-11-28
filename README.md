@@ -3,30 +3,26 @@ Rust Budget Manager
 A simple, fast, and reliable command-line budget manager written in Rust.
 This tool helps you keep track of income, expenses, and balances across multiple accounts — all locally, with no external dependencies.
 
-Features
+Features:
 
-Track income and spending
+-Track income and spending
 
-Add income entries
+-Add income entries & expense entries
 
-Add expense entries
+-Categorize transactions
 
-Categorize transactions
+-Create any number of accounts (e.g., checking, savings, cash)
 
-Multiple accounts support
+-View balances for each account
 
-Create any number of accounts (e.g., checking, savings, cash)
+-Transfer between accounts (optional, if you plan to add it)
 
-View balances for each account
+-Current balance summary
 
-Transfer between accounts (optional, if you plan to add it)
+-See up-to-date totals for each account
 
-Current balance summary
+-View overall net balance
 
-See up-to-date totals for each account
+-Fast and safe
 
-View overall net balance
-
-Fast and safe
-
-Built with Rust’s performance and reliability
+-Built with Rust’s performance and reliability
