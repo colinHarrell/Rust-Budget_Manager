@@ -30,4 +30,5 @@ Features:
 How to run:
 
 1. Download project
+3. CD to Rust Budget_Manager directory in powershell
 2. cargo run
