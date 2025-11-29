@@ -6,6 +6,7 @@ use std::collections::HashMap;
 use std::fs::{File, OpenOptions};
 use std::io::{self, Read, Write};
 use std::path::Path;
+mod options;
 
 //to go to/from json file
 #[derive(Serialize, Deserialize)]
@@ -89,43 +90,76 @@ fn main() {
         //After logging in choose what to do
         if db.login(&username, &password) {
             println!("\nWelcome back, {}!", username);
-            // Menu options
-            println!("What would you like to do? Choose a number:");
-            println!("1. View Balances");
-            println!("2. View total (before & after debt)");
-            println!("3. Add account and total");
-            println!("4. Add money to account");
-            println!("5. Withdraw money from account");
-            println!("6. Remove money account");
-            println!("7. Transfer money between your accounts");
-            println!("8. Send money");
-            println!("9. Logout");
-            println!("10. Delete account");
 
-            let mut input = String::new();
-            io::stdin().read_line(&mut input).expect("Failed to read");
+            loop {
+                // Menu options
+                println!("What would you like to do? Choose a number:");
+                println!("1. View Balances");
+                println!("2. View total (before & after debt)");
+                println!("3. Add account and total");
+                println!("4. Add money to account");
+                println!("5. Withdraw money from account");
+                println!("6. Remove money account");
+                println!("7. Transfer money between your accounts");
+                println!("8. Send money");
+                println!("9. Logout");
+                println!("10. Delete account");
 
-            // Convert input to integer
-            let _num: u32 = match input.trim().parse() {
-                Ok(n) => n,
-                Err(_) => {
-                    println!("Please enter a valid number!");
-                    return;
+                let mut input = String::new();
+                io::stdin().read_line(&mut input).expect("Failed to read");
+
+                // Convert input to integer
+                let _num: u32 = match input.trim().parse() {
+                    Ok(n) => n,
+                    Err(_) => {
+                        println!("Please enter a valid number!");
+                        continue;
+                    }
+                };
+                // Match user input to corresponding action
+                match input.trim() {
+                    "1" => {
+                        println!("You chose to view balances.");
+                        crate::options::options::view_balances();
+                    }
+                    "2" => {
+                        println!("You chose to view total (before & after debt).");
+                        crate::options::options::view_totals();
+                    }
+                    "3" => {
+                        println!("You chose to add account and total.");
+                        crate::options::options::add_account_and_balance();
+                    }
+                    "4" => {
+                        println!("You chose to add money to account.");
+                        crate::options::options::deposit();
+                    }
+                    "5" => {
+                        println!("You chose to withdraw money from account.");
+                        crate::options::options::withdraw();
+                    }
+                    "6" => {
+                        println!("You chose to remove money account.");
+                        crate::options::options::remove_account();
+                    }
+                    "7" => {
+                        println!("You chose to transfer money between your accounts.");
+                        crate::options::options::internal_transfer();
+                    }
+                    "8" => {
+                        println!("You chose to send money.");
+                        crate::options::options::send_money();
+                    }
+                    "9" => {
+                        println!("You chose to logout. Goodbye!");
+                        break;
+                    }
+                    "10" => {
+                        println!("You chose to delete account.");
+                        crate::options::options::delete_account();
+                    }
+                    _ => println!("Invalid option."),
                 }
-            };
-            // Match user input to corresponding action
-            match input.trim() {
-                "1" => println!("You chose to view balances."),
-                "2" => println!("You chose to view total (before & after debt)."),
-                "3" => println!("You chose to add account and total."),
-                "4" => println!("You chose to add money to account."),
-                "5" => println!("You chose to withdraw money from account."),
-                "6" => println!("You chose to remove money account."),
-                "7" => println!("You chose to transfer money between your accounts."),
-                "8" => println!("You chose to send money."),
-                "9" => println!("You chose to logout. Goodbye!"),
-                "10" => println!("You chose to delete account."),
-                _ => println!("Invalid option."),
             }
         } else {
             println!("\nInvalid username or password.");
@@ -153,43 +187,75 @@ fn main() {
         if db.register(&username, &password) {
             println!("\nAccount created! Welcome, {}!", username);
 
-            // Menu options
-            println!("What would you like to do? Choose a number:");
-            println!("1. View Balances");
-            println!("2. View total (before & after debt)");
-            println!("3. Add account and total");
-            println!("4. Add money to account");
-            println!("5. Withdraw money from account");
-            println!("6. Remove money account");
-            println!("7. Transfer money between your accounts");
-            println!("8. Send money");
-            println!("9. Logout");
-            println!("10. Delete account");
+            loop {
+                // Menu options
+                println!("What would you like to do? Choose a number:");
+                println!("1. View Balances");
+                println!("2. View total (before & after debt)");
+                println!("3. Add account and total");
+                println!("4. Add money to account");
+                println!("5. Withdraw money from account");
+                println!("6. Remove money account");
+                println!("7. Transfer money between your accounts");
+                println!("8. Send money");
+                println!("9. Logout");
+                println!("10. Delete account");
 
-            let mut input = String::new();
-            io::stdin().read_line(&mut input).expect("Failed to read");
+                let mut input = String::new();
+                io::stdin().read_line(&mut input).expect("Failed to read");
 
-            // Convert input to integer
-            let _num: u32 = match input.trim().parse() {
-                Ok(n) => n,
-                Err(_) => {
-                    println!("Please enter a valid number!");
-                    return;
+                // Convert input to integer
+                let _num: u32 = match input.trim().parse() {
+                    Ok(n) => n,
+                    Err(_) => {
+                        println!("Please enter a valid number!");
+                        continue;
+                    }
+                };
+                // Match user input to corresponding action
+                match input.trim() {
+                    "1" => {
+                        println!("You chose to view balances.");
+                        crate::options::options::view_balances();
+                    }
+                    "2" => {
+                        println!("You chose to view total (before & after debt).");
+                        crate::options::options::view_totals();
+                    }
+                    "3" => {
+                        println!("You chose to add account and total.");
+                        crate::options::options::add_account_and_balance();
+                    }
+                    "4" => {
+                        println!("You chose to add money to account.");
+                        crate::options::options::deposit();
+                    }
+                    "5" => {
+                        println!("You chose to withdraw money from account.");
+                        crate::options::options::withdraw();
+                    }
+                    "6" => {
+                        println!("You chose to remove money account.");
+                        crate::options::options::remove_account();
+                    }
+                    "7" => {
+                        println!("You chose to transfer money between your accounts.");
+                        crate::options::options::internal_transfer();
+                    }
+                    "8" => {
+                        println!("You chose to send money.");
+                        crate::options::options::send_money();
+                    }
+                    "9" => {
+                        println!("You chose to logout. Goodbye!");
+                        break;
+                    }
+                    "10" => {
+                        println!("You chose to delete account.");
+                        crate::options::options::delete_account();
+                    }
+                    _ => println!("Invalid option."),
                 }
-            };
-            // Match user input to corresponding action
-            match input.trim() {
-                "1" => println!("You chose to view balances."),
-                "2" => println!("You chose to view total (before & after debt)."),
-                "3" => println!("You chose to add account and total."),
-                "4" => println!("You chose to add money to account."),
-                "5" => println!("You chose to withdraw money from account."),
-                "6" => println!("You chose to remove money account."),
-                "7" => println!("You chose to transfer money between your accounts."),
-                "8" => println!("You chose to send money."),
-                "9" => println!("You chose to logout. Goodbye!"),
-                "10" => println!("You chose to delete account."),
-                _ => println!("Invalid option."),
             }
         } else {
             println!("Error creating account.");
