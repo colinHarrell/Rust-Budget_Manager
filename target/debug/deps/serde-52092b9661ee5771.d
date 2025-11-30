@@ -1,0 +1,14 @@
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\deps\serde-52092b9661ee5771.d: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\colin\OneDrive\Desktop\Rust\ Budget_Manager\target\debug\build\serde-15a02bf4066364b5\out/private.rs
+
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\deps\libserde-52092b9661ee5771.rlib: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\colin\OneDrive\Desktop\Rust\ Budget_Manager\target\debug\build\serde-15a02bf4066364b5\out/private.rs
+
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\deps\libserde-52092b9661ee5771.rmeta: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs C:\Users\colin\OneDrive\Desktop\Rust\ Budget_Manager\target\debug\build\serde-15a02bf4066364b5\out/private.rs
+
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\lib.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\integer128.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\mod.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\de.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\serde-1.0.228\src\private\ser.rs:
+C:\Users\colin\OneDrive\Desktop\Rust\ Budget_Manager\target\debug\build\serde-15a02bf4066364b5\out/private.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\colin\\OneDrive\\Desktop\\Rust Budget_Manager\\target\\debug\\build\\serde-15a02bf4066364b5\\out

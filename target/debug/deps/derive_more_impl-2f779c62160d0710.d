@@ -1,0 +1,9 @@
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\deps\derive_more_impl-2f779c62160d0710.d: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\lib.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\utils.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\from.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\../README.md C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\../doc/from.md
+
+C:\Users\colin\OneDrive\Desktop\Rust Budget_Manager\target\debug\deps\derive_more_impl-2f779c62160d0710.dll: C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\lib.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\utils.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\from.rs C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\../README.md C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\../doc/from.md
+
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\lib.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\utils.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\from.rs:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\../README.md:
+C:\Users\colin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\derive_more-impl-1.0.0\src\../doc/from.md:
