@@ -1,7 +1,15 @@
 {
   "users": {
-    "delete": "1",
-    "colin.x1": "Colin3108()$--;",
-    "cjdash100": "12345"
+    "cjdash100": {
+      "password": "12345",
+      "accounts": {
+        "checkings": 30.0,
+        "savings": 21000.0
+      }
+    },
+    "delete": {
+      "password": "delete",
+      "accounts": {}
+    }
   }
 }

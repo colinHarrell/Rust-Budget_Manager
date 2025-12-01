@@ -1,4 +1,3 @@
-pub mod options{
   use std::io::{self, stdin};
 
   //1. View Balances from individual accounts
@@ -12,22 +11,20 @@ pub mod options{
   }
 
   //3. Add Account and Balance
-  pub fn add_account_and_balance(){
-    println!("Enter account type: (e.g., Checking, Savings, Credit Card, etc)");
+  pub fn add_account_and_balance() -> (String, f32) {
+    println!("Enter account type (eg checkings, savings, credit, debt, etc):");
     let mut account_type = String::new();
-    stdin().read_line(&mut account_type).expect("Failed to read line");
+    stdin().read_line(&mut account_type).unwrap();
+    let account_type = account_type.trim().to_string();
 
-    println!("Enter initial balance: ");
+    println!("Enter initial balance:");
     let mut balance = String::new();
-    stdin().read_line(&mut balance).expect("Failed to read line");
-    let balance: f32 = balance.trim().parse().expect("Please enter a valid number");
+    stdin().read_line(&mut balance).unwrap();
+    let balance: f32 = balance.trim().parse().unwrap();
 
-    if balance < 0.0 {
-      println!("Warning: You CAN NOT create an account with a negative balance");
-    }else{
     println!("Account added successfully.");
-    println!("Your {} account has been created with a balance of ${}.", account_type.trim(), balance);
-  }
+
+    (account_type, balance)
   }
 
   //4. Deposit Money into Account
@@ -61,5 +58,3 @@ pub mod options{
   pub fn delete_account(){
 
   }
-
-}

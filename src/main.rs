@@ -9,13 +9,18 @@ use std::path::Path;
 mod options;
 
 //to go to/from json file
-#[derive(Serialize, Deserialize)]
-struct UserDB {
-    users: HashMap<String, String>,
+#[derive(Serialize, Deserialize, Debug)]
+struct User {
+    password: String,
+    accounts: HashMap<String, f32>,
 }
 
-impl UserDB {
-    //checks if json file exists, if not creates one
+#[derive(Serialize, Deserialize, Debug)]
+struct UserDB {
+    users: HashMap<String, User>,
+}
+
+ impl UserDB {
     fn load() -> Self {
         let path = Path::new("users.json");
 
@@ -34,7 +39,6 @@ impl UserDB {
         })
     }
 
-    //saves to json file
     fn save(&self) {
         let json = serde_json::to_string_pretty(self).unwrap();
         let mut file = OpenOptions::new()
@@ -46,22 +50,34 @@ impl UserDB {
         file.write_all(json.as_bytes()).unwrap();
     }
 
-    //registers new user if username doesn't exist
     fn register(&mut self, username: &str, password: &str) -> bool {
         if self.users.contains_key(username) {
-            return false; // username exists
+            return false;
         }
-        self.users
-            .insert(username.to_string(), password.to_string());
+
+        self.users.insert(
+            username.to_string(),
+            User {
+                password: password.to_string(),
+                accounts: HashMap::new(),
+            },
+        );
+
         self.save();
         true
     }
 
-    //returns true if login is successful, meaing username and password match
     fn login(&self, username: &str, password: &str) -> bool {
         match self.users.get(username) {
-            Some(stored) => stored == password,
+            Some(user) => user.password == password,
             None => false,
+        }
+    }
+
+    fn add_account(&mut self, username: &str, account: &str, balance: f32) {
+        if let Some(user) = self.users.get_mut(username) {
+            user.accounts.insert(account.to_string(), balance);
+            self.save();
         }
     }
 }
@@ -120,35 +136,38 @@ fn main() {
                 match input.trim() {
                     "1" => {
                         println!("You chose to view balances.");
-                        crate::options::options::view_balances();
+                        options::view_balances();
                     }
                     "2" => {
                         println!("You chose to view total (before & after debt).");
-                        crate::options::options::view_totals();
+                        options::view_totals();
                     }
                     "3" => {
                         println!("You chose to add account and total.");
-                        crate::options::options::add_account_and_balance();
+                        let (acct, balance) = options::add_account_and_balance();
+                        db.add_account(&username, &acct, balance);
+                        println!("Saved to users.json!");
                     }
+
                     "4" => {
                         println!("You chose to add money to account.");
-                        crate::options::options::deposit();
+                        options::deposit();
                     }
                     "5" => {
                         println!("You chose to withdraw money from account.");
-                        crate::options::options::withdraw();
+                        options::withdraw();
                     }
                     "6" => {
                         println!("You chose to remove money account.");
-                        crate::options::options::remove_account();
+                        options::remove_account();
                     }
                     "7" => {
                         println!("You chose to transfer money between your accounts.");
-                        crate::options::options::internal_transfer();
+                        options::internal_transfer();
                     }
                     "8" => {
                         println!("You chose to send money.");
-                        crate::options::options::send_money();
+                        options::send_money();
                     }
                     "9" => {
                         println!("You chose to logout. Goodbye!");
@@ -156,7 +175,7 @@ fn main() {
                     }
                     "10" => {
                         println!("You chose to delete account.");
-                        crate::options::options::delete_account();
+                        options::delete_account();
                     }
                     _ => println!("Invalid option."),
                 }
@@ -216,35 +235,37 @@ fn main() {
                 match input.trim() {
                     "1" => {
                         println!("You chose to view balances.");
-                        crate::options::options::view_balances();
+                        options::view_balances();
                     }
                     "2" => {
                         println!("You chose to view total (before & after debt).");
-                        crate::options::options::view_totals();
+                        options::view_totals();
                     }
                     "3" => {
                         println!("You chose to add account and total.");
-                        crate::options::options::add_account_and_balance();
+                        let (acct, balance) = options::add_account_and_balance();
+                        db.add_account(&username, &acct, balance);
+                        println!("Saved to users.json!");
                     }
                     "4" => {
                         println!("You chose to add money to account.");
-                        crate::options::options::deposit();
+                        options::deposit();
                     }
                     "5" => {
                         println!("You chose to withdraw money from account.");
-                        crate::options::options::withdraw();
+                        options::withdraw();
                     }
                     "6" => {
                         println!("You chose to remove money account.");
-                        crate::options::options::remove_account();
+                        options::remove_account();
                     }
                     "7" => {
                         println!("You chose to transfer money between your accounts.");
-                        crate::options::options::internal_transfer();
+                        options::internal_transfer();
                     }
                     "8" => {
                         println!("You chose to send money.");
-                        crate::options::options::send_money();
+                        options::send_money();
                     }
                     "9" => {
                         println!("You chose to logout. Goodbye!");
@@ -252,7 +273,7 @@ fn main() {
                     }
                     "10" => {
                         println!("You chose to delete account.");
-                        crate::options::options::delete_account();
+                        options::delete_account();
                     }
                     _ => println!("Invalid option."),
                 }
