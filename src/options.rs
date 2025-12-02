@@ -1,8 +1,18 @@
   use std::io::{self, stdin};
+  use serde_json::Value;
+  use crate::UserDB;
 
   //1. View Balances from individual accounts
-  pub fn view_balances(){
-    
+  pub fn view_balances(username: &str, users: &UserDB){
+    if let Some(user) = users.users.get(username) {
+        println!("Balances for {}:", username);
+
+        for (account, balance) in &user.accounts {
+            println!("  {}: ${}", account, balance);
+        }
+    } else {
+        println!("User '{}' not found.", username);
+    }
   }
 
   //2. View Total of all accounts (before & after debt)

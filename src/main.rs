@@ -136,7 +136,8 @@ fn main() {
                 match input.trim() {
                     "1" => {
                         println!("You chose to view balances.");
-                        options::view_balances();
+                        options::view_balances(&username, &db);
+
                     }
                     "2" => {
                         println!("You chose to view total (before & after debt).");
@@ -235,7 +236,8 @@ fn main() {
                 match input.trim() {
                     "1" => {
                         println!("You chose to view balances.");
-                        options::view_balances();
+                        options::view_balances(&username, &db);
+
                     }
                     "2" => {
                         println!("You chose to view total (before & after debt).");
