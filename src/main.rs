@@ -140,8 +140,8 @@ fn main() {
 
                     }
                     "2" => {
-                        println!("You chose to view total (before & after debt).");
-                        options::view_totals();
+                        println!("You chose to view total balance.");
+                        options::view_totals(&username, &db);
                     }
                     "3" => {
                         println!("You chose to add account and total.");
@@ -240,8 +240,8 @@ fn main() {
 
                     }
                     "2" => {
-                        println!("You chose to view total (before & after debt).");
-                        options::view_totals();
+                        println!("You chose to view total balance.");
+                        options::view_totals(&username, &db);
                     }
                     "3" => {
                         println!("You chose to add account and total.");

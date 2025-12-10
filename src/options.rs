@@ -15,8 +15,14 @@
     }
   }
 
-  //2. View Total of all accounts (before & after debt)
-  pub fn view_totals(){
+  //2. View Total of all accounts
+  pub fn view_totals(username: &str, users: &UserDB){
+    if let Some(user) = users.users.get(username) {
+        let total: f32 = user.accounts.values().sum();
+        println!("Total balance: ${}", username, total);
+    } else {
+        println!("User '{}' not found.", username);
+    }
 
   }
 
