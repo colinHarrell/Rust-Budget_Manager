@@ -19,7 +19,7 @@
   pub fn view_totals(username: &str, users: &UserDB){
     if let Some(user) = users.users.get(username) {
         let total: f32 = user.accounts.values().sum();
-        println!("Total balance: ${}", username, total);
+        println!("Total balance: ${}", total);
     } else {
         println!("User '{}' not found.", username);
     }
@@ -44,13 +44,57 @@
   }
 
   //4. Deposit Money into Account
-  pub fn deposit(){
+  pub fn deposit(users: &mut UserDB, username: &str) {
+    println!("Enter account to deposit into:");
+    let mut account = String::new();
+    stdin().read_line(&mut account).unwrap();
+    let account = account.trim();
 
+    if let Some(user) = users.users.get_mut(username) {
+        if let Some(current_balance) = user.accounts.get_mut(account) {
+            println!("Enter amount to deposit:");
+            let mut amount_str = String::new();
+            stdin().read_line(&mut amount_str).unwrap();
+            if let Ok(amount) = amount_str.trim().parse::<f32>() {
+                *current_balance += amount;
+                println!("Deposit successful. New balance: ${}", current_balance);
+                users.save();
+            } else {
+                println!("Invalid amount.");
+            }
+        } else {
+            println!("Account '{}' not found.", account);
+        }
+    } else {
+        println!("User not found.");
+    }
   }
 
   //5. Withdraw Money from Account
-  pub fn withdraw(){
-    
+  pub fn withdraw(users: &mut UserDB, username: &str) {
+    println!("Enter account to withdraw from:");
+    let mut account = String::new();
+    stdin().read_line(&mut account).unwrap();
+    let account = account.trim();
+
+    if let Some(user) = users.users.get_mut(username) {
+        if let Some(current_balance) = user.accounts.get_mut(account) {
+            println!("Enter amount to withdraw:");
+            let mut amount_str = String::new();
+            stdin().read_line(&mut amount_str).unwrap();
+            if let Ok(amount) = amount_str.trim().parse::<f32>() {
+                *current_balance -= amount;
+                println!("Withdraw successful. New balance: ${}", current_balance);
+                users.save();
+            } else {
+                println!("Invalid amount.");
+            }
+        } else {
+            println!("Account '{}' not found.", account);
+        }
+    } else {
+        println!("User not found.");
+    }
   }
 
   //6. Remove Account

@@ -152,11 +152,11 @@ fn main() {
 
                     "4" => {
                         println!("You chose to add money to account.");
-                        options::deposit();
+                        options::deposit(&mut db, &username);
                     }
                     "5" => {
                         println!("You chose to withdraw money from account.");
-                        options::withdraw();
+                        options::withdraw(&mut db, &username);
                     }
                     "6" => {
                         println!("You chose to remove money account.");
@@ -251,11 +251,11 @@ fn main() {
                     }
                     "4" => {
                         println!("You chose to add money to account.");
-                        options::deposit();
+                        options::deposit(&mut db, &username);
                     }
                     "5" => {
                         println!("You chose to withdraw money from account.");
-                        options::withdraw();
+                        options::withdraw(&mut db, &username);
                     }
                     "6" => {
                         println!("You chose to remove money account.");
