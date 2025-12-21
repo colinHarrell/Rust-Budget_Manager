@@ -176,7 +176,11 @@ fn main() {
                     }
                     "10" => {
                         println!("You chose to delete account.");
-                        options::delete_account();
+                        options::delete_account(&mut db, &username);
+                        db.save();
+                        if !db.users.contains_key(&username) {
+                            break;
+                        }
                     }
                     _ => println!("Invalid option."),
                 }
@@ -275,7 +279,11 @@ fn main() {
                     }
                     "10" => {
                         println!("You chose to delete account.");
-                        options::delete_account();
+                        options::delete_account(&mut db, &username);
+                        db.save();
+                        if !db.users.contains_key(&username) {
+                            break;
+                        }
                     }
                     _ => println!("Invalid option."),
                 }

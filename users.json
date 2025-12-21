@@ -3,13 +3,9 @@
     "cjdash100": {
       "password": "12345",
       "accounts": {
-        "savings": 100.0,
-        "checkings": 30.0
+        "checkings": 30.0,
+        "savings": 100.0
       }
-    },
-    "delete": {
-      "password": "delete",
-      "accounts": {}
     }
   }
 }

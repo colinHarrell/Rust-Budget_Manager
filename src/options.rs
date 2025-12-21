@@ -1,6 +1,7 @@
   use std::io::{self, stdin};
   use serde_json::Value;
   use crate::UserDB;
+  use std::io::Write;
 
   //1. View Balances from individual accounts
   pub fn view_balances(username: &str, users: &UserDB){
@@ -115,6 +116,19 @@
   //9 does nothing, just to exit
 
   //10. Delete Account
-  pub fn delete_account(){
+  pub fn delete_account(db: &mut UserDB, username: &str) {
+    print!("Are you sure you want to delete your account? (y/n): ");
+    io::stdout().flush().unwrap();
 
-  }
+    let mut confirmation = String::new();
+    io::stdin().read_line(&mut confirmation).unwrap();
+
+    if confirmation.trim().eq_ignore_ascii_case("y") {
+        if db.users.remove(username).is_some() {
+            println!("Account deleted successfully.");
+        } else {
+            println!("User not found.");
+        }
+    }
+}
+
