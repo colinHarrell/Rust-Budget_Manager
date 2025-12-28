@@ -5,9 +5,11 @@
 
   //1. View Balances from individual accounts
   pub fn view_balances(username: &str, users: &UserDB){
+    //check if user exists
     if let Some(user) = users.users.get(username) {
         println!("Balances for {}:", username);
 
+        //iterate through accounts and print balances
         for (account, balance) in &user.accounts {
             println!("  {}: ${}", account, balance);
         }
@@ -18,6 +20,7 @@
 
   //2. View Total of all accounts
   pub fn view_totals(username: &str, users: &UserDB){
+    // Check if user exists
     if let Some(user) = users.users.get(username) {
         let total: f32 = user.accounts.values().sum();
         println!("Total balance: ${}", total);
@@ -29,18 +32,18 @@
 
   //3. Add Account and Balance
   pub fn add_account_and_balance() -> (String, f32) {
+    // Get account type
     println!("Enter account type (eg checkings, savings, credit, debt, etc):");
     let mut account_type = String::new();
     stdin().read_line(&mut account_type).unwrap();
     let account_type = account_type.trim().to_string();
-
+    // Get initial balance
     println!("Enter initial balance:");
     let mut balance = String::new();
     stdin().read_line(&mut balance).unwrap();
     let balance: f32 = balance.trim().parse().unwrap();
-
+    // Confirmation message
     println!("Account added successfully.");
-
     (account_type, balance)
   }
 
@@ -57,7 +60,7 @@
             let mut amount_str = String::new();
             stdin().read_line(&mut amount_str).unwrap();
             if let Ok(amount) = amount_str.trim().parse::<f32>() {
-                *current_balance += amount;
+                *current_balance += amount; // Update balance
                 println!("Deposit successful. New balance: ${}", current_balance);
                 users.save();
             } else {
@@ -78,11 +81,13 @@
     stdin().read_line(&mut account).unwrap();
     let account = account.trim();
 
+    // Check if user and account exist
     if let Some(user) = users.users.get_mut(username) {
         if let Some(current_balance) = user.accounts.get_mut(account) {
             println!("Enter amount to withdraw:");
             let mut amount_str = String::new();
             stdin().read_line(&mut amount_str).unwrap();
+            // Parse and process withdrawal
             if let Ok(amount) = amount_str.trim().parse::<f32>() {
                 *current_balance -= amount;
                 println!("Withdraw successful. New balance: ${}", current_balance);
@@ -104,7 +109,7 @@
     let mut account = String::new();
     stdin().read_line(&mut account).unwrap();
     let account = account.trim();
-
+    // Check if user and account exist and remove
     if let Some(user) = users.users.get_mut(username) {
         if user.accounts.remove(account).is_some() {
             println!("Account '{}' removed successfully.", account);
@@ -132,13 +137,14 @@
     println!("How much would you like to transfer?");
     let mut amount_str = String::new();
     stdin().read_line(&mut amount_str).unwrap();
-
+    // Parse and process transfer
     if let Ok(amount) = amount_str.trim().parse::<f32>() {
         if let Some(user) = users.users.get_mut(username) {
-            if let (Some(from_balance), Some(to_balance)) = (user.accounts.get(from_account), user.accounts.get(to_account)) {
+            // Check if both accounts exist and have sufficient funds
+            if let (Some(from_balance), Some(to_balance)) = (user.accounts.get(from_account), user.accounts.get(to_account)){
                 if *from_balance >= amount && amount > 0.0 {
-                    *user.accounts.get_mut(from_account).unwrap() -= amount;
-                    *user.accounts.get_mut(to_account).unwrap() += amount;
+                    *user.accounts.get_mut(from_account).unwrap() -= amount; // Deduct from source account
+                    *user.accounts.get_mut(to_account).unwrap() += amount; // Add to destination account
                     println!("Transferred ${} from {} to {}.", amount, from_account, to_account);
                     users.save();
                 } else if amount <= 0.0 {
@@ -213,16 +219,16 @@
     }
   }
 
-  //9 does nothing, just to exit
+  //9. does nothing, just to exit
 
   //10. Delete Account
   pub fn delete_account(db: &mut UserDB, username: &str) {
     print!("Are you sure you want to delete your account? (y/n): ");
     io::stdout().flush().unwrap();
-
+    // Read user confirmation
     let mut confirmation = String::new();
     io::stdin().read_line(&mut confirmation).unwrap();
-
+    // If user confirms, delete account
     if confirmation.trim().eq_ignore_ascii_case("y") {
         if db.users.remove(username).is_some() {
             println!("Account deleted successfully.");

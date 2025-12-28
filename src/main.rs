@@ -111,7 +111,7 @@ fn main() {
                 // Menu options
                 println!("What would you like to do? Choose a number:");
                 println!("1. View Balances");
-                println!("2. View total (before & after debt)");
+                println!("2. View total");
                 println!("3. Add account and total");
                 println!("4. Add money to account");
                 println!("5. Withdraw money from account");
@@ -215,7 +215,7 @@ fn main() {
                 // Menu options
                 println!("What would you like to do? Choose a number:");
                 println!("1. View Balances");
-                println!("2. View total (before & after debt)");
+                println!("2. View total");
                 println!("3. Add account and total");
                 println!("4. Add money to account");
                 println!("5. Withdraw money from account");
