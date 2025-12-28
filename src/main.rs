@@ -164,7 +164,7 @@ fn main() {
                     }
                     "7" => {
                         println!("You chose to transfer money between your accounts.");
-                        options::internal_transfer();
+                        options::internal_transfer(&mut db, &username);
                     }
                     "8" => {
                         println!("You chose to send money.");
@@ -267,7 +267,7 @@ fn main() {
                     }
                     "7" => {
                         println!("You chose to transfer money between your accounts.");
-                        options::internal_transfer();
+                        options::internal_transfer(&mut db, &username);
                     }
                     "8" => {
                         println!("You chose to send money.");

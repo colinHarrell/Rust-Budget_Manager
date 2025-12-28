@@ -1,5 +1,5 @@
   use std::io::{self, stdin};
-  use serde_json::Value;
+  //use serde_json::Value;
   use crate::UserDB;
   use std::io::Write;
 
@@ -100,12 +100,47 @@
 
   //6. Remove Account
   pub fn remove_account(){
-
+    
   }
 
   //7. Transfer Money between your Accounts
-  pub fn internal_transfer(){
+  pub fn internal_transfer(users: &mut UserDB, username: &str){
+    println!("Which account would you like to transfer from?");
+    let mut from_account = String::new();
+    stdin().read_line(&mut from_account).unwrap();
+    let from_account = from_account.trim();
 
+    println!("Which account would you like to transfer to?");
+    let mut to_account = String::new();
+    stdin().read_line(&mut to_account).unwrap();
+    let to_account = to_account.trim();
+
+    println!("How much would you like to transfer?");
+    let mut amount_str = String::new();
+    stdin().read_line(&mut amount_str).unwrap();
+
+    if let Ok(amount) = amount_str.trim().parse::<f32>() {
+        if let Some(user) = users.users.get_mut(username) {
+            if let (Some(from_balance), Some(to_balance)) = (user.accounts.get(from_account), user.accounts.get(to_account)) {
+                if *from_balance >= amount && amount > 0.0 {
+                    *user.accounts.get_mut(from_account).unwrap() -= amount;
+                    *user.accounts.get_mut(to_account).unwrap() += amount;
+                    println!("Transferred ${} from {} to {}.", amount, from_account, to_account);
+                    users.save();
+                } else if amount <= 0.0 {
+                    println!("Invalid amount. Must be positive.");
+                } else {
+                    println!("Insufficient funds in {} account.", from_account);
+                }
+            } else {
+                println!("One or both accounts not found.");
+            }
+        } else {
+            println!("User not found.");
+        }
+    } else {
+        println!("Invalid amount.");
+    }
   }
 
   //8. Send Money to another User
