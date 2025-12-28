@@ -160,7 +160,7 @@ fn main() {
                     }
                     "6" => {
                         println!("You chose to remove money account.");
-                        options::remove_account();
+                        options::remove_account(&mut db, &username);
                     }
                     "7" => {
                         println!("You chose to transfer money between your accounts.");
@@ -168,7 +168,7 @@ fn main() {
                     }
                     "8" => {
                         println!("You chose to send money.");
-                        options::send_money();
+                        options::send_money(&mut db, &username);
                     }
                     "9" => {
                         println!("You chose to logout. Goodbye!");
@@ -263,7 +263,7 @@ fn main() {
                     }
                     "6" => {
                         println!("You chose to remove money account.");
-                        options::remove_account();
+                        options::remove_account(&mut db, &username);
                     }
                     "7" => {
                         println!("You chose to transfer money between your accounts.");
@@ -271,7 +271,7 @@ fn main() {
                     }
                     "8" => {
                         println!("You chose to send money.");
-                        options::send_money();
+                        options::send_money(&mut db, &username);
                     }
                     "9" => {
                         println!("You chose to logout. Goodbye!");

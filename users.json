@@ -1,16 +1,16 @@
 {
   "users": {
-    "transfer": {
-      "password": "test",
-      "accounts": {
-        "checkings": 5000000000.0
-      }
-    },
     "cjdash100": {
       "password": "12345",
       "accounts": {
-        "checkings": 110.0,
-        "savings": 10.0
+        "checkings": 109.0,
+        "savings": 251.0
+      }
+    },
+    "transfer": {
+      "password": "test",
+      "accounts": {
+        "savings": 249.0
       }
     }
   }
